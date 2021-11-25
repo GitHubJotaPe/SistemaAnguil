@@ -32,7 +32,7 @@ cartografiaUI <- function(id) {
       sidebarLayout(
         sidebarPanel(
           selectInput(ns('inAnio'),
-                      'Año',
+                      'AÑO',
                       choices = c(#"PP_LAPAMPA_1Q_NOVIEMBRE.jpeg",
                         "2021",
                         "2020")),
@@ -41,40 +41,10 @@ cartografiaUI <- function(id) {
                       choices = c(meses)),
           selectInput(
             ns('inX'),
-            'orig',
+            'ÍTEM',
             choices = c(
               "1Q" = "1Q",
               "2Q" = "2Q",
-              "Acumulado" = "TOT",
-              "Anomalias" = "ANOM"
-            )
-          ),
-          selectInput(
-            ns('inX'),
-            'espacio',
-            choices = c(
-              "1 Q" = "1Q",
-              "2 Q" = "2Q",
-              "Acumulado" = "TOT",
-              "Anomalias" = "ANOM"
-            )
-          ),
-          selectInput(
-            ns('inX'),
-            'con º',
-            choices = c(
-              "1ºQ" = "1Q",
-              "2ºQ" = "2Q",
-              "Acumulado" = "TOT",
-              "Anomalias" = "ANOM"
-            )
-          ),
-          selectInput(
-            ns('inX'),
-            'letras',
-            choices = c(
-              "1er Q" = "1Q",
-              "2do Q" = "2Q",
               "Acumulado" = "TOT",
               "Anomalias" = "ANOM"
             )
