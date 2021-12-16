@@ -9,10 +9,16 @@ publicacionesUI <- function(id) {
     navlistPanel(
       "Informe de evaluación de cultivos",
       tabPanel(
-        "Febrero 2021",
-        "Informe de FEBRERO.pdf",
+        "Diciembre 2021",
+        "Informe de DICIEMBRE.pdf",
         tags$iframe(style = "height:800px; width:100%; scrolling=yes",
-                    src = "./informes/Informe de FEBRERO.pdf")
+                    src = "./informes/Informe de DICIEMBRE.pdf")
+      ),
+      tabPanel(
+        "Junio 2021",
+        "Informe de JUNIO.pdf",
+        tags$iframe(style = "height:800px; width:100%; scrolling=yes",
+                    src = "./informes/Informe de JUNIO.pdf")
       ),
       tabPanel(
         "Marzo 2021",
@@ -21,14 +27,21 @@ publicacionesUI <- function(id) {
                     src = "./informes/Informe de MARZO.pdf")
       ),
       tabPanel(
-        "Junio 2021",
-        "Informe de JUNIO.pdf",
+        "Febrero 2021",
+        "Informe de FEBRERO.pdf",
         tags$iframe(style = "height:800px; width:100%; scrolling=yes",
-                    src = "./informes/Informe de JUNIO.pdf")
+                    src = "./informes/Informe de FEBRERO.pdf")
       ),
+      
       
       "Publicaciones climáticas",
       
+      tabPanel(
+        "Tormentas en La Pampa Dic. 2021",
+        "Tormentas_LaPampa_Dic2021.pdf",
+        tags$iframe(style = "height:800px; width:100%; scrolling=yes",
+                    src = "./informes/Tormentas_LaPampa_Dic2021.pdf")
+      ),
       tabPanel(
         "Precipitaciones de General Acha",
         "inta_analisis_de_precipitaciones_gralacha.pdf",
