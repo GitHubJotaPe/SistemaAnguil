@@ -40,13 +40,29 @@ ui <- navbarPage(
     cartografiaUI(id = "cartografia")
   ),
   
+  # #################
+  # # Calcular índices agrometeorológicos
+  # tabPanel(
+  #   title = "Calcular índices agrometeorológicos",
+  #   icon = icon("calculator"),
+  #   value = "agromet",
+  #   agrometUI(id = "agromet")
+  # ),
+  
   #################
-  # Calcular índices agrometeorológicos
-  tabPanel(
-    title = "Calcular índices agrometeorológicos",
-    icon = icon("calculator"),
-    value = "agromet",
-    agrometUI(id = "agromet")
+  # Registros históricos y Climatología Anguil
+  navbarMenu(
+    title = "Índices Agrometeorológicos",
+    tabPanel(
+      title = "Estadística Básica",
+      value = "agromet_basica",
+      agroBasicaUI(id = "agromet_basica")
+    ),
+    tabPanel(
+      title = "Índices",
+      value = "agromet_indices",
+      agroIndicesUI(id = "agromet_indices")
+    )
   ),
   
   #################
@@ -92,6 +108,15 @@ ui <- navbarPage(
     icon = icon("radiacion"),
     value = "radiacion",
     radiacionUI(id = "radiacion")
+  ),
+  
+  #################
+  # REPOSITORIO DIGITAL DE ARCHIVOS DE CARTOGRAFIA
+  tabPanel(
+    title = "Repositorio digital de archivos de cartografía",
+    icon = icon(""),
+    value = "gis",
+    gisUI(id = "gis")
   )
   
 )
@@ -117,7 +142,9 @@ server <- function(input, output, session) {
   
   #################
   # agromet
-  agrometServer(id = "agromet")
+  #agrometServer(id = "agromet")
+  agroBasicaServer(id = "agromet_basica")
+  agroIndicesServer(id = "agromet_indices")
   
   #################
   # links
@@ -134,6 +161,10 @@ server <- function(input, output, session) {
   #################
   # radar
   radarServer(id = "radar")
+  
+  #################
+  # gis
+  gisServer(id = "gis")
   
 }
 

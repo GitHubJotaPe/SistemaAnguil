@@ -1,18 +1,11 @@
-A872823 <-  siga::siga_datos("A872823") # Descarga de datos de Anguil
-fecha_min_A872823 <- min(A872823$fecha) # Fecha minima del dataset
-fecha_max_A872823 <- max(A872823$fecha) # Fecha maxima del dataset
-
-
 #################################
 # UI
-agrometUI <- function(id) {
+agroBasicaUI <- function(id) {
   ns <- NS(id)
   
   tagList(sidebarLayout(
     sidebarPanel(
       h3("A872823"),
-      h4("filtros"),
-      h6("EJ: t_min <= 0  , para filtrar sólo los días donde hay heladas."),
       dateRangeInput(
         ns("inFechas"),
         "Rango de fechas:",
@@ -23,31 +16,7 @@ agrometUI <- function(id) {
         format = "dd/mm/yyyy",
         separator = " - ",
         language = "es"
-      ),
-      
-      fluidRow(column(
-        8,
-        selectInput(
-          ns("operacion"),
-          "operacion",
-          choices = c(
-            "Temp. min. abrigo a 150cm <=" = "t_a_min",
-            "Temp. max. abrigo a 150cm >=" = "t_a_max",
-            "Temp. min. intemperie 50cm <=" = "t_i_min"
-          )
-        )
-      ),
-      column(
-        4,
-        numericInput(
-          inputId = ns("valor"),
-          label = "valor (en ºC)",
-          value = 0,
-          min = -10,
-          max = 10,
-          step = 1
-        )
-      ))
+      )
       
     ),
     
@@ -66,22 +35,18 @@ agrometUI <- function(id) {
               '
             )
           )),
+          
+          h1("Estadísticas básicas"),
+          
           fluidRow(column(6,
-                          h2(
+                          h3(
                             "PERIODO SELECCIONADO"
                           ))
                    ,
                    column(6,
-                          h2(textOutput(
+                          h3(textOutput(
                             ns("titulo")
-                          ))))
-          ,
-          
-          
-          h3(textOutput(ns("subtitulo_1"))),
-          fluidRow(valueBoxOutput(ns("boxN"))),
-          
-          h3("Estadísticas básicas"),
+                          )))),
           
           fluidRow(
             valueBoxOutput(ns("temp_min")),
@@ -105,7 +70,7 @@ agrometUI <- function(id) {
 
 #################################
 # SERVER
-agrometServer <- function(id) {
+agroBasicaServer <- function(id) {
   moduleServer(id,
                function(input, output, session) {
                  output$titulo <- renderText({
@@ -252,18 +217,6 @@ agrometServer <- function(id) {
                  
                  
                  ##### agromet - umbrales
-                 output$subtitulo_1 <- renderText({
-                   aux_formula <- switch(
-                     input$operacion,
-                     "t_a_min" = "Temperatura mínima en abrigo a 150cm <= ",
-                     "t_a_max" = "Temperatura máxima en abrigo a 150cm >=" ,
-                     "t_i_min" = "Temperatura mínima a la intemperie a 50cm <= "
-                   )
-                   
-                   paste0("Uso de la funcion 'umbrales' con el filtro de ",
-                          aux_formula,
-                          input$valor)
-                 })
                  
                  
                  data_aux <- reactive({
@@ -286,18 +239,6 @@ agrometServer <- function(id) {
                    
                    retorno
                    
-                 })
-                 
-                 # Caja con cantidad de días retornada por la funcion
-                 output$boxN <- renderValueBox({
-                   data <- data_aux() %>% select(N)
-                   if (is.na(data)) {
-                     data <- 0
-                   }
-                   valueBox(paste0(data),
-                            "día/s",
-                            icon = icon("list"),
-                            color = "green")
                  })
                  
                  
