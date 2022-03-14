@@ -4,3 +4,4 @@
 .Rhistory
 data/.env
 connect.R
+rsconnect/
