@@ -19,10 +19,9 @@ jobs:
       #  shell: Rscript {0}
       
       - name: Push to shinyapps.io
-        run: >
+        run: |
           apt-get install libcurl4-openssl-dev
-          Rscript
-          -e "install.packages(c('curl'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+          Rscript -e "install.packages(c('curl'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
           
 
       - name: Push to shinyapps.io
