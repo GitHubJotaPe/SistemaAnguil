@@ -5,3 +5,4 @@
 data/.env
 connect.R
 rsconnect/
+.Renviron
