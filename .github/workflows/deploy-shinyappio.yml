@@ -25,6 +25,7 @@ jobs:
 
       - name: install agromet
         run: |
+          Rscript -e "install.packages(c('remotes'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
           Rscript -e "remotes::install_github('AgRoMeteorologiaINTA/agromet', build_vignettes = FALSE)"
           
       - name: install otros
