@@ -6,7 +6,7 @@ on:
 jobs:
   deploy-shiny:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -20,11 +20,17 @@ jobs:
       
       - name: Push to shinyapps.io
         run: >
+          apt-get install libcurl4-openssl-dev
+          Rscript
+          -e "install.packages(c('curl'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+          
+
+      - name: Push to shinyapps.io
+        run: >
           Rscript
           -e "install.packages(c('shiny', 'rsconnect'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
           -e "rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token='${{ secrets.TOKEN }}', secret='${{ secrets.SECRET }}')"
           -e "rsconnect::deployApp(appName = '${{ secrets.TESTNAME }}' )"
-
       
       #- name: shinyapps credentials
       #  with:
