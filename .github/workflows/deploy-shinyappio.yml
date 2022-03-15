@@ -26,8 +26,8 @@ jobs:
 
       - name: Push to shinyapps.io
         run: |
-          rsconnect::setAccountInfo(name="${{ secrets.SHINY_ACC_NAME }}", token = "${{ secrets.TOKEN }}" , secret = "${{ secrets.SECRET }}" )
-          rsconnect::deployApp(appName = "${{ secrets.TESTNAME }}" )
+          rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token = '${{ secrets.TOKEN }}' , secret = '${{ secrets.SECRET }}' )
+          rsconnect::deployApp(appName = '${{ secrets.TESTNAME }}' )
 
 
       #  - name: Push to shiny.io
