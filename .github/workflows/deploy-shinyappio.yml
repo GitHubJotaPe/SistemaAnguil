@@ -25,7 +25,7 @@ jobs:
 
       - name: install agromet
         run: |
-          Rscript -e "remotes::install_github('AgRoMeteorologiaINTA/agromet', build_vignettes = FALSE)""
+          Rscript -e "remotes::install_github('AgRoMeteorologiaINTA/agromet', build_vignettes = FALSE)"
           
       - name: install otros
         run: |
