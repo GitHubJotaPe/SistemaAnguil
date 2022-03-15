@@ -21,7 +21,6 @@ jobs:
       - name: Push to shinyapps.io
         run: >
           Rscript
-          -e "options(pkgType = 'binary')"
           -e "install.packages(c('shiny', 'rsconnect'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
           -e "rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token='${{ secrets.TOKEN }}', secret='${{ secrets.SECRET }}')"
           -e "rsconnect::deployApp(appName = '${{ secrets.TESTNAME }}' )"
