@@ -24,12 +24,16 @@ jobs:
       #  run: Rscript -e 'rsconnect::setAccountInfo(name="myusername", token="tokengoeshere", secret="$rsconnect_secret")'
       #  shell: Rscript {0}
 
-      - name: Push to shiny.io
+      - name: Push to shinyapps.io
         run: |
-          Rscript -e "rsconnect::setAccountInfo(name=${{ secrets.SHINY_ACC_NAME }}, token=${{ secrets.TOKEN }}, secret=${{ secrets.SECRET }})"
-          Rscript -e "rsconnect::deployApp(appName = ${{ secrets.TESTNAME }})" 
+          rsconnect::setAccountInfo(name="${{ secrets.SHINY_ACC_NAME }}", token = "${{ secrets.TOKEN }}" , secret = "${{ secrets.SECRET }}" )
+          rsconnect::deployApp(appName = "${{ secrets.TESTNAME }}" )
 
 
+      #  - name: Push to shiny.io
+      #  run: |
+      #    Rscript -e "rsconnect::setAccountInfo(name=${{ secrets.SHINY_ACC_NAME }}, token=${{ secrets.TOKEN }}, secret=${{ secrets.SECRET }})"
+      #    Rscript -e "rsconnect::deployApp(appName = ${{ secrets.TESTNAME }})" 
 
 
 
