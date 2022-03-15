@@ -13,10 +13,19 @@ jobs:
 
       - uses: r-lib/actions/setup-r@master
 
-      - name: Install shiny
-        run: |
-          install.packages(c("shiny", "rsconnect"), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')
-        shell: Rscript {0}
+      #- name: Install shiny
+      #  run: |
+      #    install.packages(c("shiny", "rsconnect"), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')
+      #  shell: Rscript {0}
+      
+      - name: Push to shinyapps.io
+        run: >
+          Rscript
+          -e "options(pkgType = 'binary')"
+          -e "install.packages(c('shiny', 'rsconnect'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+          -e "rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token='${{ secrets.TOKEN }}', secret='${{ secrets.SECRET }}')"
+          -e "rsconnect::deployApp(appName = '${{ secrets.TESTNAME }}' )"
+
       
       #- name: shinyapps credentials
       #  with:
@@ -24,13 +33,7 @@ jobs:
       #  run: Rscript -e 'rsconnect::setAccountInfo(name="myusername", token="tokengoeshere", secret="$rsconnect_secret")'
       #  shell: Rscript {0}
 
-      - name: Push to shinyapps.io
-        run: >
-          Rscript
-          -e "options(pkgType = 'binary')"
-          -e "rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token='${{ secrets.TOKEN }}', secret='${{ secrets.SECRET }}')"
-          -e "rsconnect::deployApp(appName = '${{ secrets.TESTNAME }}' )"
-
+      
       #- name: Push to shinyapps.io
       #  run: |
       #    rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token = '${{ secrets.TOKEN }}' , secret = '${{ secrets.SECRET }}' )
