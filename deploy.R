@@ -18,8 +18,7 @@ rsconnect::setAccountInfo(
 
 # Deploy the application.
 rsconnect::deployApp(
-	appFiles = c("app.R", "R/*","data/*","www/*"), #, you can specify which files to deploy, 
-	#or keep this NULL to deploy everything
+	appFiles = NULL, #deploy all directory
 	appName = error_on_missing_name("MASTERNAME"),
 	appTitle = "shinyapplication"
 )
