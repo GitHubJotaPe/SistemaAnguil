@@ -11,32 +11,42 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      #- uses: r-lib/actions/setup-r@master
-      - uses: rocker-org/rocker/r-base/latest@master
+      - name: Build image
+        run: docker build -t image_test .
+
+      - name: execute
+        run: >
+          docker run
+            -e SHINY_ACC_NAME=${{ secrets.SHINY_ACC_NAME }}
+            -e TOKEN=${{secrets.TOKEN}}
+            -e SECRET=${{secrets.SECRET}}
+            -e MASTERNAME=${{secrets.MASTER_NAME}}
+          image_test
+      
+      #- name: install curl
+      #  run: |
+      #    sudo apt-get install -y libcurl4-openssl-dev
+      #    Rscript -e "install.packages(c('curl'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+
+      #- name: install agromet
+      #  run: |
+      #    Rscript -e "install.packages(c('remotes'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+      #    Rscript -e "remotes::install_github('AgRoMeteorologiaINTA/agromet', build_vignettes = FALSE)"
+          
+      #- name: install otros
+      #  run: |
+      #    Rscript -e "install.packages(c('siga'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+      #    Rscript -e "install.packages(c('rsconnect'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+      #    Rscript -e "rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token='${{ secrets.TOKEN }}', secret='${{ secrets.SECRET }}')"
+      #    Rscript -e "rsconnect::deployApp(appName = '${{ secrets.TESTNAME }}' )"
+      
 
       #- name: Install shiny
       #  run: |
       #    install.packages(c("shiny", "rsconnect"), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')
       #  shell: Rscript {0}
-      
-      - name: install curl
-        run: |
-          sudo apt-get install -y libcurl4-openssl-dev
-          Rscript -e "install.packages(c('curl'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
 
-      - name: install agromet
-        run: |
-          Rscript -e "install.packages(c('remotes'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
-          Rscript -e "remotes::install_github('AgRoMeteorologiaINTA/agromet', build_vignettes = FALSE)"
-          
-      - name: install otros
-        run: |
-          Rscript -e "install.packages(c('siga'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
-          Rscript -e "install.packages(c('rsconnect'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
-          Rscript -e "rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token='${{ secrets.TOKEN }}', secret='${{ secrets.SECRET }}')"
-          Rscript -e "rsconnect::deployApp(appName = '${{ secrets.TESTNAME }}' )"
-      
-          
+
       #Rscript -e "install.packages(c('shiny', 'rsconnect'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
           
 
