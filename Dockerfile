@@ -6,4 +6,5 @@ COPY R/ R/
 COPY data/ data/
 COPY www/ www/
 COPY deploy.R deploy.R
+RUN R -e 'remotes::install_github("AgRoMeteorologiaINTA/agromet", build_vignettes = FALSE)'
 CMD Rscript deploy.R
