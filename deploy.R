@@ -20,6 +20,6 @@ rsconnect::setAccountInfo(
 rsconnect::deployApp(
 	#appFiles = NULL, #deploy all directory
 	appFiles = c("app.R", "R/inicio.R"), 
-	appName = error_on_missing_name("MASTERNAME"),
+	appName = error_on_missing_name("TESTNAME"),
 	appTitle = "shinyapplication"
 )
