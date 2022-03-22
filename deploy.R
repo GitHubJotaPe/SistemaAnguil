@@ -1,3 +1,6 @@
+# Se sigue del tutorial:
+# https://www.r-bloggers.com/2021/02/deploy-to-shinyapps-io-from-github-actions/
+
 library(rsconnect)
 
 # a function to stop the script when one of the variables cannot be found. and to strip quotation marks from the secrets when you supplied them. (maybe it is just easier to never use them)

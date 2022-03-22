@@ -33,7 +33,8 @@ cartografiaUI <- function(id) {
         sidebarPanel(
           selectInput(ns('inAnio'),
                       'AÑO',
-                      choices = c(#"PP_LAPAMPA_1Q_NOVIEMBRE.jpeg",
+                      choices = c(
+                        "2022",
                         "2021",
                         "2020")),
           selectInput(ns('inMes'),
