@@ -27,16 +27,17 @@ cartografiaUI <- function(id) {
   tabsetPanel(
     type = "pills",
     #: tabs” o “pills”
+    
+    # PRECIPITACIONES   ######################
     tabPanel(
       "Precipitaciones",
       sidebarLayout(
         sidebarPanel(
           selectInput(ns('inAnio'),
                       'AÑO',
-                      choices = c(
-                        "2022",
-                        "2021",
-                        "2020")),
+                      choices = c("2022",
+                                  "2021",
+                                  "2020")),
           selectInput(ns('inMes'),
                       'MES',
                       choices = c(meses)),
@@ -56,21 +57,34 @@ cartografiaUI <- function(id) {
       )
     ),
     
+    # SEQUIA  ######################
     tabPanel(
       "Índices de sequía",
-      sidebarLayout(sidebarPanel(
-        selectInput(
-          ns('inImgSeq'),
-          'Seleccione imagen',
-          choices = c(archivos_sequia)
-        )
-        
-      ),
-      mainPanel(uiOutput(ns(
-        "imagen_2"
-      ))))
+      sidebarLayout(
+        sidebarPanel(
+          selectInput(ns('inAnioSeq'),
+                      'AÑO',
+                      choices = c("2022",
+                                  "2021",
+                                  "2020")),
+          selectInput(ns('inMesSeq'),
+                      'MES',
+                      choices = c(meses)),
+          
+          tags$a(
+            "Índice de Sequía de Palmer (2015-2019)",
+            href = "https://inta.gob.ar/documentos/mapas-de-indice-de-sequia-provincia-de-la-pampa-2015-2019",
+            target =
+              "_blank"
+          )
+          
+          
+        ),
+        mainPanel(uiOutput(ns("imagen_2")))
+      )
     ),
     
+    # HELADAS ######################
     tabPanel("Mapas de heladas",
              sidebarLayout(
                sidebarPanel(
@@ -91,6 +105,7 @@ cartografiaUI <- function(id) {
              ))
     ,
     
+    # PROMEDIOS HISTORICOS ######################
     tabPanel(
       "Promedios históricos de precipitación en la provincia de La Pampa",
       navlistPanel(
@@ -121,23 +136,8 @@ cartografiaUI <- function(id) {
         )
         
       )
-    ),
-    
-    tabPanel(
-      "Mapas de índice de sequía provincia de La Pampa 2015-2019",
-      tags$h4(
-        "El Índice de Sequía de Palmer (ISP) (1965) fue desarrollado para medir la intensidad, duración y extensión espacial de la sequía."
-      ),
-      tags$h4(
-        "Este informe propone mostrar mapas de ISP en la región centro oriental agropecuaria de la provincia de La Pampa, para monitorear mensualmente la ocurrencia de sequía y determinar áreas con distintos niveles de riesgo."
-      ),
-      tags$h4(
-        "La variabilidad interanual de las precipitaciones está ocasionada por la presencia frecuente de eventos secos, y eventos húmedos. Las consecuencias de estas situaciones extremas impactan sobre el desarrollo social, económico y ambiental de la región afectada."
-      ),
-      tags$a("Link al sitio web",
-             href = "https://inta.gob.ar/documentos/mapas-de-indice-de-sequia-provincia-de-la-pampa-2015-2019", target =
-               "_blank")
     )
+    
     
   )
   
@@ -148,7 +148,7 @@ cartografiaUI <- function(id) {
 cartografiaServer <- function(id) {
   moduleServer(id,
                function(input, output, session) {
-                 
+                 # PRECIPITACIONES ######################
                  output$imagen_1 <- renderUI({
                    ns <- session$ns
                    
@@ -166,12 +166,23 @@ cartografiaServer <- function(id) {
                    
                  })
                  
+                 # SEQUIAS ######################
                  output$imagen_2 <- renderUI({
                    ns <- session$ns
-                   src <- paste0("./sequias/", input$inImgSeq)
-                   img(src = src, width = "100%")
+                   
+                   src <- archivos_sequia %>%
+                     str_subset(input$inAnioSeq) %>%
+                     str_subset(input$inMesSeq)
+                   
+                   if (identical(src, character(0))) {
+                     HTML('<h2 style="color: red;">No hay imagen para el periodo seleccionado</h2>')
+                   } else {
+                     src <- paste0("./sequias/", src)
+                     img(src = src, width = "100%")
+                   }
                  })
                  
+                 # HELADAS ######################
                  output$imagen_3 <- renderUI({
                    ns <- session$ns
                    

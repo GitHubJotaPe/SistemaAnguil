@@ -1,4 +1,4 @@
-#################################
+##############################
 # UI
 ui <- navbarPage(
   id = "tabs",
@@ -11,7 +11,7 @@ ui <- navbarPage(
   # Inicio
   tabPanel(
     title = " Inicio",
-    icon = icon("home"),
+    icon = icon("home",verify_fa = FALSE),
     inicioUI(id = "inicio")
   ),
   
@@ -34,7 +34,7 @@ ui <- navbarPage(
   # Cartografía de variables agrometeorológicas
   tabPanel(
     title = "Cartografía",
-    icon = icon("map-marked-alt"),
+    icon = icon("map-marked-alt",verify_fa = FALSE),
     value = "cartografia",
     h1("Cartografía de variables agrometeorológicas"),
     cartografiaUI(id = "cartografia")
@@ -69,7 +69,7 @@ ui <- navbarPage(
   # Links
   tabPanel(
     title = "Links",
-    icon = icon("link"),
+    icon = icon("link",verify_fa = FALSE),
     value = "links",
     linksUI(id = "links")
   ),
@@ -78,7 +78,7 @@ ui <- navbarPage(
   # Informes técnicos y publicaciones
   tabPanel(
     title = "Informes técnicos y publicaciones",
-    icon = icon("publicaciones"),
+    icon = icon("publicaciones",verify_fa = FALSE),
     value = "publicaciones",
     publicacionesUI(id = "publicaciones")
   ),
@@ -87,7 +87,7 @@ ui <- navbarPage(
   # Eventos climáticos extremos
   tabPanel(
     title = "Eventos",
-    icon = icon("eventos"),
+    icon = icon("eventos",verify_fa = FALSE),
     value = "eventos",
     eventosUI(id = "eventos")
   ),
@@ -96,7 +96,7 @@ ui <- navbarPage(
   # Radar meteorológico
   tabPanel(
     title = "Radar",
-    icon = icon("radar"),
+    icon = icon("radar",verify_fa = FALSE),
     value = "radar",
     radarUI(id = "radar")
   ),
@@ -105,7 +105,7 @@ ui <- navbarPage(
   # Radiación solar
   tabPanel(
     title = "Radiación solar",
-    icon = icon("radiacion"),
+    icon = icon("radiacion",verify_fa = FALSE),
     value = "radiacion",
     radiacionUI(id = "radiacion")
   ),
@@ -114,7 +114,7 @@ ui <- navbarPage(
   # REPOSITORIO DIGITAL DE ARCHIVOS DE CARTOGRAFIA
   tabPanel(
     title = "Repositorio digital de archivos de cartografía",
-    icon = icon(""),
+    icon = icon("",verify_fa = FALSE),
     value = "gis",
     gisUI(id = "gis")
   )

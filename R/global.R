@@ -9,18 +9,18 @@ library(wesanderson)
 
 meses <-
   c(
-    "ENE.",
-    "FEB.",
-    "MAR.",
-    "ABR.",
-    "MAY.",
-    "JUN.",
-    "JUL.",
-    "AGO.",
-    "SET.",
-    "OCT.",
-    "NOV.",
-    "DIC."
+    "Enero"      = "ENE",
+    "Febrero"    = "FEB",
+    "Marzo"      = "MAR",
+    "Abril"      = "ABR",
+    "Mayo"       = "MAY",
+    "Junio"      = "JUN",
+    "Julio"      = "JUL",
+    "Agosto"     = "AGO",
+    "Septiembre" = "SEP",
+    "Octubre"    = "OCT",
+    "Noviembre"  = "NOV",
+    "Diciembre"  = "DIC"
   )
 
 direcciones_viento <- as_tibble(c("E","NE", "N","NO","O","SO","S","SE"))

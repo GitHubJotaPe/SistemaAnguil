@@ -4,7 +4,7 @@ library(tidyverse)
 anguil_csv <- readr::read_csv(
   "data/anguil.csv",
   col_types = cols(
-    X1 = col_skip(),
+    #X1 = col_skip(),
     fecha = col_date(format = "%d/%m/%Y"),
     codigo_nh = col_integer(),
     t_max = col_double(),
