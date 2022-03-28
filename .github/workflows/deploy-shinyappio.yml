@@ -4,15 +4,15 @@ on:
   push:
     branches: [ test ]
 jobs:
-  build:
+  deploy-shiny:
 
-    runs-on: Ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build -t test .
+        run: docker build -t image_test .
 
       - name: execute
         run: >
@@ -20,9 +20,61 @@ jobs:
           -e SHINY_ACC_NAME=${{ secrets.SHINY_ACC_NAME }}
           -e TOKEN=${{secrets.TOKEN}}
           -e SECRET=${{secrets.SECRET}}
-          -e MASTERNAME=${{secrets.TESTNAME}}
-          test
+          -e TESTNAME=${{secrets.TESTNAME}}
+          image_test
+      
+      #- name: install curl
+      #  run: |
+      #    sudo apt-get install -y libcurl4-openssl-dev
+      #    Rscript -e "install.packages(c('curl'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
 
+      #- name: install agromet
+      #  run: |
+      #    Rscript -e "install.packages(c('remotes'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+      #    Rscript -e "remotes::install_github('AgRoMeteorologiaINTA/agromet', build_vignettes = FALSE)"
+          
+      #- name: install otros
+      #  run: |
+      #    Rscript -e "install.packages(c('siga'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+      #    Rscript -e "install.packages(c('rsconnect'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+      #    Rscript -e "rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token='${{ secrets.TOKEN }}', secret='${{ secrets.SECRET }}')"
+      #    Rscript -e "rsconnect::deployApp(appName = '${{ secrets.TESTNAME }}' )"
+      
+
+      #- name: Install shiny
+      #  run: |
+      #    install.packages(c("shiny", "rsconnect"), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')
+      #  shell: Rscript {0}
+
+
+      #Rscript -e "install.packages(c('shiny', 'rsconnect'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+          
+
+      #- name: Push to shinyapps.io
+      #  run: >
+      #    Rscript
+      #    -e "install.packages(c('shiny', 'rsconnect'), INSTALL_opts=c('--no-help', '--no-html'), repos='http://cran.r-project.org')"
+      #    -e "rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token='${{ secrets.TOKEN }}', secret='${{ secrets.SECRET }}')"
+      #    -e "rsconnect::deployApp(appName = '${{ secrets.TESTNAME }}' )"
+      
+      #- name: shinyapps credentials
+      #  with:
+      #    rsconnect_secret: ${{ secrets.RSCONNECT }}
+      #  run: Rscript -e 'rsconnect::setAccountInfo(name="myusername", token="tokengoeshere", secret="$rsconnect_secret")'
+      #  shell: Rscript {0}
+
+      
+      #- name: Push to shinyapps.io
+      #  run: |
+      #    rsconnect::setAccountInfo(name='${{ secrets.SHINY_ACC_NAME }}', token = '${{ secrets.TOKEN }}' , secret = '${{ secrets.SECRET }}' )
+      #    rsconnect::deployApp(appName = '${{ secrets.TESTNAME }}' )
+
+
+          
+      #  - name: Push to shiny.io
+      #  run: |
+      #    Rscript -e "rsconnect::setAccountInfo(name=${{ secrets.SHINY_ACC_NAME }}, token=${{ secrets.TOKEN }}, secret=${{ secrets.SECRET }})"
+      #    Rscript -e "rsconnect::deployApp(appName = ${{ secrets.TESTNAME }})" 
 
 
 

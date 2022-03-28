@@ -1,0 +1,16 @@
+
+.config
+connect.R
+deploy.R
+Dockerfile
+.git
+.github
+.gitignore
+.local
+README.md
+.Renviron
+.Rhistory
+.Rproj.user
+.rscignore
+rsconnect
+SistemaAnguil.Rproj
