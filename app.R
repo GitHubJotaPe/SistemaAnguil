@@ -11,7 +11,7 @@ ui <- navbarPage(
   # Inicio
   tabPanel(
     title = " Inicio",
-    icon = icon("home",verify_fa = FALSE),
+    icon = icon("home", verify_fa = FALSE),
     shinythemes::themeSelector(),
     inicioUI(id = "inicio")
   ),
@@ -35,7 +35,7 @@ ui <- navbarPage(
   # Cartografía de variables agrometeorológicas
   tabPanel(
     title = "Cartografía",
-    icon = icon("map-marked-alt",verify_fa = FALSE),
+    icon = icon("map-marked-alt", verify_fa = FALSE),
     value = "cartografia",
     h1("Cartografía de variables agrometeorológicas"),
     cartografiaUI(id = "cartografia")
@@ -70,7 +70,7 @@ ui <- navbarPage(
   # Links
   tabPanel(
     title = "Links",
-    icon = icon("link",verify_fa = FALSE),
+    icon = icon("link", verify_fa = FALSE),
     value = "links",
     linksUI(id = "links")
   ),
@@ -79,7 +79,7 @@ ui <- navbarPage(
   # Informes técnicos y publicaciones
   tabPanel(
     title = "Informes técnicos y publicaciones",
-    icon = icon("publicaciones",verify_fa = FALSE),
+    icon = icon("publicaciones", verify_fa = FALSE),
     value = "publicaciones",
     publicacionesUI(id = "publicaciones")
   ),
@@ -88,7 +88,7 @@ ui <- navbarPage(
   # Eventos climáticos extremos
   tabPanel(
     title = "Eventos",
-    icon = icon("eventos",verify_fa = FALSE),
+    icon = icon("eventos", verify_fa = FALSE),
     value = "eventos",
     eventosUI(id = "eventos")
   ),
@@ -97,7 +97,7 @@ ui <- navbarPage(
   # Radar meteorológico
   tabPanel(
     title = "Radar",
-    icon = icon("radar",verify_fa = FALSE),
+    icon = icon("radar", verify_fa = FALSE),
     value = "radar",
     radarUI(id = "radar")
   ),
@@ -106,7 +106,7 @@ ui <- navbarPage(
   # Radiación solar
   tabPanel(
     title = "Radiación solar",
-    icon = icon("radiacion",verify_fa = FALSE),
+    icon = icon("radiacion", verify_fa = FALSE),
     value = "radiacion",
     radiacionUI(id = "radiacion")
   ),
@@ -115,12 +115,31 @@ ui <- navbarPage(
   # REPOSITORIO DIGITAL DE ARCHIVOS DE CARTOGRAFIA
   tabPanel(
     title = "Repositorio digital de archivos de cartografía",
-    icon = icon("",verify_fa = FALSE),
+    icon = icon("", verify_fa = FALSE),
     value = "gis",
     gisUI(id = "gis")
-  )
+    
+  ),
   
+  tags$footer(
+    'Estación Experimental Agropecuaria Anguil "Ing. Agr. Guillermo Covas".
+    Ruta Nacional N| 5. Km 580. (6326) Anguil, La Pampa. 02954-495057 - @intaanguil',
+    align = "center",
+    style = "
+            position:fixed;
+            bottom:0;
+            width:100%;
+            height:50px;
+            color: black;
+            padding: 10px;
+            background-color: white;
+            z-index: 1000;
+            right: 0;
+            text-align:center;
+    "
+  )
 )
+
 
 #################################
 # SERVER
