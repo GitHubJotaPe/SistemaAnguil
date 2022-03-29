@@ -12,6 +12,7 @@ ui <- navbarPage(
   tabPanel(
     title = " Inicio",
     icon = icon("home",verify_fa = FALSE),
+    shinythemes::themeSelector(),
     inicioUI(id = "inicio")
   ),
   
