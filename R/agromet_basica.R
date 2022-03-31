@@ -40,7 +40,7 @@ agroBasicaUI <- function(id) {
           
           fluidRow(column(6,
                           h3(
-                            "PERIODO SELECCIONADO"
+                            "Período seleccionado: "
                           ))
                    ,
                    column(6,
@@ -139,7 +139,7 @@ agroBasicaServer <- function(id) {
                    data <- data_aux_2() %>% select(sum)
                    valueBox(
                      paste0(round(data, 1), "mm"),
-                     "Sumatoria de lluvias",
+                     "Acumulado de precipitación",
                      icon = icon("cloud-showers-heavy"),
                      color = "teal"
                    )
@@ -150,7 +150,7 @@ agroBasicaServer <- function(id) {
                    data <- data_aux_2() %>% select(media_viento)
                    valueBox(
                      paste0(round(data, 1), "km/h"),
-                     "Promedio del viento",
+                     "Viento Medio",
                      icon = icon("wind"),
                      color = "light-blue"
                    )
@@ -160,7 +160,7 @@ agroBasicaServer <- function(id) {
                    data <- data_aux_2() %>% select(max_viento)
                    valueBox(
                      paste0(round(data, 1), "km/h"),
-                     "Máximas de viento",
+                     "Viento Máximo",
                      icon = icon("wind"),
                      color = "blue"
                    )
@@ -206,7 +206,7 @@ agroBasicaServer <- function(id) {
                    fig <- fig %>%
                      layout(
                        showlegend = T,
-                       title = list(text = "CANTIDAD DE DÍAS CON VIENTO POR PUNTO CARDINAL"),
+                       title = list(text = "Frecuencia de vientos o Rosa de los vientos"),
                        margin = mrg,
                        paper_bgcolor = '#b0bdca'
                      )

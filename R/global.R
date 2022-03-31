@@ -7,21 +7,13 @@ library(plotly)
 library(RColorBrewer)
 library(wesanderson)
 
-meses <-
-  c(
-    "Enero"      = "ENE",
-    "Febrero"    = "FEB",
-    "Marzo"      = "MAR",
-    "Abril"      = "ABR",
-    "Mayo"       = "MAY",
-    "Junio"      = "JUN",
-    "Julio"      = "JUL",
-    "Agosto"     = "AGO",
-    "Septiembre" = "SEP",
-    "Octubre"    = "OCT",
-    "Noviembre"  = "NOV",
-    "Diciembre"  = "DIC"
-  )
+# La parte izquierda es la que se ve por ejemplo en la tabla de historicos
+# La parte derecha, es la que busca coincidencia en los nombres de la cartografía
+
+mes_id <- c("ENE", "FEB","MAR", "ABR","MAY", "JUN","JUL", "AGO","SEP", "OCT", "NOV", "DIC")
+mes_desc <- c("Enero", "Febrero", "Marzo", "Abril","Mayo", "Junio","Julio", "Agosto","Septiembre", "Octubre","Noviembre", "Diciembre")
+meses_df <- data.frame(mes_id,mes_desc)
+meses = setNames(meses_df$mes_id , meses_df$mes_desc)
 
 direcciones_viento <- as_tibble(c("E","NE", "N","NO","O","SO","S","SE"))
 

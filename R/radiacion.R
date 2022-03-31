@@ -13,8 +13,8 @@ radiacionUI <- function(id) {
         tags$iframe(style = "height:800px; width:100%; scrolling=yes",
                     src = "./radiacion/radiacion.png")
       ),
-      "ATLAS DE ENERGIA SOLAR",
-      "RADIACIÓN SOLAR PROMEDIO MENSUAL Y ANUAL DE LA PAMPA HUMEDA",
+      "Atlas de energia solar",
+      "Radiacíon solar promedio mensual y anual de la pampa húmeda",
       "",
       tabPanel(
         "Enero",
@@ -96,7 +96,7 @@ radiacionUI <- function(id) {
       ),
       
       
-      "MAPAS DE RADIACION SOLAR MENSUAL",
+      "Mapas de radiacón solar mensual",
       
       tabPanel(
         "AÑO 2021",

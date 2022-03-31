@@ -66,7 +66,7 @@ agroIndicesUI <- function(id) {
           
           fluidRow(column(6,
                           h3(
-                            "PERIODO SELECCIONADO"
+                            "Período seleccionado"
                           ))
                    ,
                    column(6,

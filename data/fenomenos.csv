@@ -1,20 +1,20 @@
 ID_FENOMENO;DESC_FENOMENO
-1;TEMP. MAXIMA (ºC)
-2;TEMP. MINIMA (ºC)
-3;TEMP. MEDIA (ºC)
-4;PRECIPITACION (mm)
-5;T. MINIMA A 5 (ºC)
-6;T. MINIMA A 50 (ºC)
-7;HELIOF. EFECTIVA (hs)
-8;HELIOF. RELATIVA (%)
-9;TENSION VAPOR (hPa)
-10;HUMEDAD RELATIVA (%)
-11;TEMP. PUNTO ROCIO (ºC)
-12;V.VIENTO a 10m (km/h)
-13;V.VIENTO a  2m (km/h)
-14;RAD. GLOBAL (MJ/m2)
-15;EVAPOT. POTENCIAL (mm)
-16;GRADOS DIA > 10ºC 
-17;COCIENTE FOTOTERMICO
-18;FRECUENCIA HELADAS
-19;HORAS de FRIO < 7ºC
+1;Temperatura máxima (ºC)
+2;Temperatura mínima (ºC)
+3;Temperatura media (ºC)
+4;Precipitación (mm)
+5;Temperatura mínima a 5 (ºC)
+6;Temperatura mínima a 50 (ºC)
+7;Heliofanía efectiva (hs)
+8;Heliofanía relativa (%)
+9;Tensión vapor (hPa)
+10;Humedad relativa (%)
+11;Temperatura punto rocio (ºC)
+12;Velocidad del viento a 10m (km/h)
+13;Velocidad del viento a 2m (km/h)
+14;Radiación global (MJ/m2)
+15;Evapotranspiración potencial (mm)
+16;Grados día > 10ºC 
+17;Cociente fototérmico
+18;Frecuencia heladas
+19;Horas de frio < 7ºC

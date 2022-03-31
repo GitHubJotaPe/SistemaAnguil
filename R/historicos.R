@@ -40,8 +40,8 @@ getDat <- function (paramId, paramDesc) {
     matrix(nrow = 19, byrow = FALSE)
   
   colnames(retorno) <-
-    c(meses, "AÑO") # a los meses, se le agrega AÑO
-  
+    c(mes_desc, "Año") # a los meses, se le agrega AÑO
+    
   retorno <-
     cbind(fenomenos_csv,
           retorno,
@@ -137,7 +137,7 @@ historicoServer <- function(id) {
                      options = list(searching = FALSE, paging = FALSE),
                      escape = FALSE
                    ) %>%
-                     DT::formatStyle(0, fontWeight = DT::styleEqual("AÑO", 'bold'))
+                     DT::formatStyle(0, fontWeight = DT::styleEqual("Año", 'bold'))
 
                  })
                  
@@ -150,7 +150,7 @@ historicoServer <- function(id) {
                    dataset <- dataset %>%
                      filter(ID_FENOMENO == input$variable) %>%
                      filter(ID_LOCALIDAD == input$localidad) %>%
-                     select(-DESC_FENOMENO, -ID_LOCALIDAD, -AÑO) %>%
+                     select(-DESC_FENOMENO, -ID_LOCALIDAD, -Año) %>%
                      reshape2::melt(id.vars = c("ID_FENOMENO", "LOCALIDAD")) %>%
                      mutate(variable = factor(variable, levels = unique(variable)))
                    
