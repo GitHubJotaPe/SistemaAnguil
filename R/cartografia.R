@@ -47,10 +47,10 @@ cartografiaUI <- function(id) {
             ns('inItem'),
             'Ítem',
             choices = c(
-              "Primera quincena" = "1Q",
-              "Segunda quincena" = "2Q",
-              "Acumulado" = "TOT",
-              "Anomalias" = "ANOM"
+              "Acumulado en primera quincena" = "1Q",
+              "Acumulado en segunda quincena" = "2Q",
+              "Acumulado mensual" = "TOT",
+              "Anomalia mensual" = "ANOM"
             )
           ),
           h3("Promedios históricos"),
