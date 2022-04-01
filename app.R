@@ -7,13 +7,30 @@ ui <- navbarPage(
   windowTitle = "Sistema Anguil",
   theme = shinytheme("superhero"),
   
+  # #################
+  # # Inicio
+  # tabPanel(
+  #   title = " Inicio",
+  #   icon = icon("home", verify_fa = FALSE),
+  #   shinythemes::themeSelector(),
+  #   inicioUI(id = "inicio")
+  # ),
+   
   #################
-  # Inicio
-  tabPanel(
-    title = " Inicio",
-    icon = icon("home", verify_fa = FALSE),
-    shinythemes::themeSelector(),
-    inicioUI(id = "inicio")
+  # Registros históricos y Climatología Anguil
+  navbarMenu(
+    title = "Índices Agrometeorológicos",
+    #shinythemes::themeSelector(),
+    tabPanel(
+      title = "Estadística Básica",
+      value = "agromet_basica",
+      agroBasicaUI(id = "agromet_basica")
+    ),
+    tabPanel(
+      title = "Índices",
+      value = "agromet_indices",
+      agroIndicesUI(id = "agromet_indices")
+    )
   ),
   
   #################
@@ -49,22 +66,6 @@ ui <- navbarPage(
   #   value = "agromet",
   #   agrometUI(id = "agromet")
   # ),
-  
-  #################
-  # Registros históricos y Climatología Anguil
-  navbarMenu(
-    title = "Índices Agrometeorológicos",
-    tabPanel(
-      title = "Estadística Básica",
-      value = "agromet_basica",
-      agroBasicaUI(id = "agromet_basica")
-    ),
-    tabPanel(
-      title = "Índices",
-      value = "agromet_indices",
-      agroIndicesUI(id = "agromet_indices")
-    )
-  ),
   
   #################
   # Links
@@ -112,7 +113,7 @@ ui <- navbarPage(
   ),
   
   tags$footer(
-    'Estación Experimental Agropecuaria Anguil "Ing. Agr. Guillermo Covas".
+    'Estación Experimental Agropecuaria Anguil "Ing. Agr. Guillermo Covas". 
     Ruta Nacional N| 5. Km 580. (6326) Anguil, La Pampa. 02954-495057 - @intaanguil',
     align = "center",
     style = "
@@ -136,7 +137,12 @@ ui <- navbarPage(
 server <- function(input, output, session) {
   #################
   # Inicio
-  callModule(inicioServer, "inicio", parent_session = session)
+  #callModule(inicioServer, "inicio", parent_session = session)
+  
+  #################
+  # agromet
+  agroBasicaServer(id = "agromet_basica")
+  agroIndicesServer(id = "agromet_indices")
   
   #################
   # historico
@@ -149,12 +155,6 @@ server <- function(input, output, session) {
   #################
   # cartografia
   cartografiaServer(id = "cartografia")
-  
-  #################
-  # agromet
-  #agrometServer(id = "agromet")
-  agroBasicaServer(id = "agromet_basica")
-  agroIndicesServer(id = "agromet_indices")
   
   #################
   # links

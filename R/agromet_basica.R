@@ -5,7 +5,7 @@ agroBasicaUI <- function(id) {
   
   tagList(sidebarLayout(
     sidebarPanel(
-      h3("A872823"),
+      h3("Estación meteorológica EEA INTA Anguil"),
       dateRangeInput(
         ns("inFechas"),
         "Rango de fechas:",
@@ -36,7 +36,7 @@ agroBasicaUI <- function(id) {
             )
           )),
           
-          h1("Estadísticas básicas"),
+          #h1("Estadísticas básicas"),
           
           fluidRow(column(6,
                           h3(

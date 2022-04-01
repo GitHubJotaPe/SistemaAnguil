@@ -5,7 +5,7 @@ agroIndicesUI <- function(id) {
   
   tagList(sidebarLayout(
     sidebarPanel(
-      h3("A872823"),
+      h3("Estación meteorológica EEA INTA Anguil"),
       h4("filtros"),
       h6("EJ: t_min <= 0  , para filtrar sólo los días donde hay heladas."),
       dateRangeInput(
@@ -62,7 +62,7 @@ agroIndicesUI <- function(id) {
             )
           )),
           
-          h1("Estadísticas básicas"),
+          #h1("Estadísticas básicas"),
           
           fluidRow(column(6,
                           h3(
@@ -76,23 +76,7 @@ agroIndicesUI <- function(id) {
           
           h3(textOutput(ns("subtitulo_1"))),
           fluidRow(valueBoxOutput(ns("boxN")))
-          
-          # ,
-          #
-          # h3("Estadísticas básicas"),
-          #
-          # fluidRow(
-          #   valueBoxOutput(ns("temp_min")),
-          #   valueBoxOutput(ns("temp_max")),
-          #   valueBoxOutput(ns("temp_mean")),
-          #   valueBoxOutput(ns("lluvia_sum")),
-          #   valueBoxOutput(ns("viento_mean")),
-          #   valueBoxOutput(ns("viento_max"))
-          #
-          # ),
-          # fluidRow(plotlyOutput(ns("grafico_radar")))
-          #
-          
+
         )
       )
       
