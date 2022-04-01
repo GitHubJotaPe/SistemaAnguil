@@ -111,16 +111,6 @@ ui <- navbarPage(
     radiacionUI(id = "radiacion")
   ),
   
-  #################
-  # REPOSITORIO DIGITAL DE ARCHIVOS DE CARTOGRAFIA
-  tabPanel(
-    title = "Repositorio digital de archivos de cartografía",
-    icon = icon("", verify_fa = FALSE),
-    value = "gis",
-    gisUI(id = "gis")
-    
-  ),
-  
   tags$footer(
     'Estación Experimental Agropecuaria Anguil "Ing. Agr. Guillermo Covas".
     Ruta Nacional N| 5. Km 580. (6326) Anguil, La Pampa. 02954-495057 - @intaanguil',
@@ -181,10 +171,6 @@ server <- function(input, output, session) {
   #################
   # radar
   radarServer(id = "radar")
-  
-  #################
-  # gis
-  gisServer(id = "gis")
   
 }
 

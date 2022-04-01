@@ -33,23 +33,37 @@ cartografiaUI <- function(id) {
       "Precipitaciones",
       sidebarLayout(
         sidebarPanel(
+          
+          h3("Informes mensuales"),
           selectInput(ns('inAnio'),
-                      'AÑO',
+                      'Año',
                       choices = c("2022",
                                   "2021",
                                   "2020")),
           selectInput(ns('inMes'),
-                      'MES',
+                      'Mes',
                       choices = c(meses)),
           selectInput(
-            ns('inX'),
-            'ÍTEM',
+            ns('inItem'),
+            'Ítem',
             choices = c(
-              "1Q" = "1Q",
-              "2Q" = "2Q",
+              "Primera quincena" = "1Q",
+              "Segunda quincena" = "2Q",
               "Acumulado" = "TOT",
               "Anomalias" = "ANOM"
             )
+          ),
+          h3("Promedios históricos"),
+            selectInput(
+              ns('inProm'),
+              'Mapa',
+              choices = c(
+                "Mapa 1" = "mapa_1.jpg",
+                "Mapa 2" = "mapa_2.jpg",
+                "Mapa 3" = "mapa_3.jpg",
+                "Mapa 4" = "mapa_4.jpg"
+              )
+          
           )
         ),
         mainPanel(textOutput(ns("salida")),
@@ -63,12 +77,12 @@ cartografiaUI <- function(id) {
       sidebarLayout(
         sidebarPanel(
           selectInput(ns('inAnioSeq'),
-                      'AÑO',
+                      'Año',
                       choices = c("2022",
                                   "2021",
                                   "2020")),
           selectInput(ns('inMesSeq'),
-                      'MES',
+                      'Mes',
                       choices = c(meses)),
           
           tags$a(
@@ -111,31 +125,39 @@ cartografiaUI <- function(id) {
       navlistPanel(
         #"Informes mensuales",
         tabPanel(
-          "MAPA 1",
+          "Mapa 1",
           "inta-mapa-precipitaciones-la-pampa-1.pdf",
           tags$iframe(style = "height:800px; width:100%; scrolling=yes",
                       src = "./precipitaciones/inta-mapa-precipitaciones-la-pampa-1.pdf")
         ),
         tabPanel(
-          "MAPA 2",
+          "Mapa 2",
           "inta-mapa-precipitaciones-la-pampa-2.pdf",
           tags$iframe(style = "height:800px; width:100%; scrolling=yes",
                       src = "./precipitaciones/inta-mapa-precipitaciones-la-pampa-2.pdf")
         ),
         tabPanel(
-          "MAPA 3",
+          "Mapa 3",
           "inta-mapa-precipitaciones-la-pampa-3.pdf",
           tags$iframe(style = "height:800px; width:100%; scrolling=yes",
                       src = "./precipitaciones/inta-mapa-precipitaciones-la-pampa-3.pdf")
         ),
         tabPanel(
-          "MAPA 4",
+          "Mapa 4",
           "inta-mapa-precipitaciones-la-pampa-4.pdf",
           tags$iframe(style = "height:800px; width:100%; scrolling=yes",
                       src = "./precipitaciones/inta-mapa-precipitaciones-la-pampa-4.pdf")
         )
         
       )
+      
+      
+    ),
+    
+    # repositorio digital de archivos ######################
+    tabPanel(
+      "Repositorio digital de archivos",
+      h1("Gis")
     )
     
     
@@ -149,22 +171,73 @@ cartografiaServer <- function(id) {
   moduleServer(id,
                function(input, output, session) {
                  # PRECIPITACIONES ######################
-                 output$imagen_1 <- renderUI({
-                   ns <- session$ns
-                   
-                   src <- archivos_precip %>%
-                     str_subset(input$inAnio) %>%
-                     str_subset(input$inMes) %>%
-                     str_subset(input$inX)
-                   
-                   if (identical(src, character(0))) {
-                     HTML('<h2 style="color: red;">No hay imagen para el periodo seleccionado</h2>')
-                   } else {
-                     src <- paste0("./precipitaciones/", src)
-                     img(src = src, width = "100%")
-                   }
+                 
+                 # observeEvent(input$inProm, {
+                 #   updateSliderInput(inputId = "n", min = input$min)
+                 # })
+                 
+                 
+                 # Cuando cambia el combo de promedios
+                 observeEvent(input$inProm, {
+                   output$imagen_1 <- renderUI({
+                     ns <- session$ns
+                     
+                     src <- paste0("promedios/",input$inProm)
+                     
+                     if (identical(src, character(0))) {
+                       HTML('<h2 style="color: red;">No hay imagen para el periodo seleccionado</h2>')
+                     } else {
+                       src <- paste0("./precipitaciones/", src)
+                       img(src = src, width = "100%")
+                     }
+                     
+                   })
                    
                  })
+                 
+                 observeEvent(c(input$inAnio, input$inMes, input$inItem), {
+                   output$imagen_1 <- renderUI({
+                      ns <- session$ns
+                      
+                      src <- archivos_precip %>%
+                           str_subset(input$inAnio) %>%
+                           str_subset(input$inMes) %>%
+                           str_subset(input$inItem)
+
+                      if (identical(src, character(0))) {
+                        HTML('<h2 style="color: red;">No hay imagen para el periodo seleccionado</h2>')
+                      } else {
+                        src <- paste0("./precipitaciones/", src)
+                        img(src = src, width = "100%")
+                      }
+
+                   })
+                   
+                 })
+                 
+                 
+                 
+                 
+                 
+                 # output$imagen_1 <- renderUI({
+                 #   ns <- session$ns
+                 #   
+                 #   
+                 #   # src <- archivos_precip %>%
+                 #   #   str_subset(input$inAnio) %>%
+                 #   #   str_subset(input$inMes) %>%
+                 #   #   str_subset(input$inX)
+                 #   
+                 #   src <- paste0("promedios/",input$inProm)
+                 #   
+                 #   if (identical(src, character(0))) {
+                 #     HTML('<h2 style="color: red;">No hay imagen para el periodo seleccionado</h2>')
+                 #   } else {
+                 #     src <- paste0("./precipitaciones/", src)
+                 #     img(src = src, width = "100%")
+                 #   }
+                 #   
+                 # })
                  
                  # SEQUIAS ######################
                  output$imagen_2 <- renderUI({
