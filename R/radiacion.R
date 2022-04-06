@@ -8,52 +8,52 @@ radiacionUI <- function(id) {
   tagList(
     tags$h1("Radiación solar"),
     
-<<<<<<< HEAD
-    sidebarLayout(
-      sidebarPanel(
-        
-        radioGroupButtons(
-          inputId = "inGB1",
-          label = "Irradiación diaria promedio mensual",
-          choices = c(meses),
-          direction = "horizontal",
-          individual = TRUE
-        ),
-        
-        "------------------",
-        
-        radioGroupButtons(
-          inputId = "inGB2",
-          label = "Irradiación diaria promedio mensual",
-          choices = c(meses),
-          direction = "vertical",
-          individual = FALSE
-        ),
-        
-        "------------------",
-        
-        selectInput(ns('inAnio'),
-                    'AÑO',
-                    choices = c("2022",
-                                "2021",
-                                "2020")),
-        selectInput(ns('inMes'),
-                    'MES',
-                    choices = c(meses)),
-        selectInput(
-          ns('inX'),
-          'ÍTEM',
-          choices = c(
-            "1Q" = "1Q",
-            "2Q" = "2Q",
-            "Acumulado" = "TOT",
-            "Anomalias" = "ANOM"
-          )
-        )
-      ),
-      mainPanel(mainPanel(uiOutput(ns("imagen_radiacion")))
-                )
-=======
+# <<<<<<< HEAD
+#     sidebarLayout(
+#       sidebarPanel(
+#         
+#         radioGroupButtons(
+#           inputId = "inGB1",
+#           label = "Irradiación diaria promedio mensual",
+#           choices = c(meses),
+#           direction = "horizontal",
+#           individual = TRUE
+#         ),
+#         
+#         "------------------",
+#         
+#         radioGroupButtons(
+#           inputId = "inGB2",
+#           label = "Irradiación diaria promedio mensual",
+#           choices = c(meses),
+#           direction = "vertical",
+#           individual = FALSE
+#         ),
+#         
+#         "------------------",
+#         
+#         selectInput(ns('inAnio'),
+#                     'AÑO',
+#                     choices = c("2022",
+#                                 "2021",
+#                                 "2020")),
+#         selectInput(ns('inMes'),
+#                     'MES',
+#                     choices = c(meses)),
+#         selectInput(
+#           ns('inX'),
+#           'ÍTEM',
+#           choices = c(
+#             "1Q" = "1Q",
+#             "2Q" = "2Q",
+#             "Acumulado" = "TOT",
+#             "Anomalias" = "ANOM"
+#           )
+#         )
+#       ),
+#       mainPanel(mainPanel(uiOutput(ns("imagen_radiacion")))
+#                 )
+# =======
     navlistPanel(
       widths = c(3, 9),
       tabPanel(
@@ -153,7 +153,7 @@ radiacionUI <- function(id) {
                     src = "./radiacion/Radiacion_solar_Agosto_2021.jpg")
       )
       
->>>>>>> 3481b1015dc0b555aacb564ca8128aa11fcc1e35
+# >>>>>>> 3481b1015dc0b555aacb564ca8128aa11fcc1e35
     )
       
     
