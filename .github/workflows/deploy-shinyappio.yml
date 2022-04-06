@@ -2,7 +2,7 @@ name: R
 
 on:
   push:
-    branches: [ test ]
+    branches: [ main ]
 jobs:
   deploy-shiny:
 
@@ -20,7 +20,7 @@ jobs:
           -e SHINY_ACC_NAME=${{ secrets.SHINY_ACC_NAME }}
           -e TOKEN=${{secrets.TOKEN}}
           -e SECRET=${{secrets.SECRET}}
-          -e TESTNAME=${{secrets.TESTNAME}}
+          -e MASTERNAME=${{secrets.MASTERNAME}}
           image_test
       
       #- name: install curl
