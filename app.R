@@ -7,20 +7,30 @@ ui <- navbarPage(
   windowTitle = "Sistema Anguil",
   theme = shinytheme("superhero"),
   
-  ## Para alinear el listado a la izquierda.
-  ## Por default, queda centrado
-  
-  tags$head(
-    tags$link(rel = "stylesheet", type = "text/css", href = "estilos.css")
-  ),
-  
+  # #################
+  # # Inicio
+  # tabPanel(
+  #   title = " Inicio",
+  #   icon = icon("home", verify_fa = FALSE),
+  #   shinythemes::themeSelector(),
+  #   inicioUI(id = "inicio")
+  # ),
   
   #################
-  # Inicio
-  tabPanel(
-    title = " Inicio",
-    icon = icon("home",verify_fa = FALSE),
-    inicioUI(id = "inicio")
+  # Registros históricos y Climatología Anguil
+  navbarMenu(
+    title = "Índices Agrometeorológicos",
+    #shinythemes::themeSelector(),
+    tabPanel(
+      title = "Estadística Básica",
+      value = "agromet_basica",
+      agroBasicaUI(id = "agromet_basica")
+    ),
+    tabPanel(
+      title = "Índices",
+      value = "agromet_indices",
+      agroIndicesUI(id = "agromet_indices")
+    )
   ),
   
   #################
@@ -42,7 +52,7 @@ ui <- navbarPage(
   # Cartografía de variables agrometeorológicas
   tabPanel(
     title = "Cartografía",
-    icon = icon("map-marked-alt",verify_fa = FALSE),
+    icon = icon("map-marked-alt", verify_fa = FALSE),
     value = "cartografia",
     h1("Cartografía de variables agrometeorológicas"),
     cartografiaUI(id = "cartografia")
@@ -58,26 +68,10 @@ ui <- navbarPage(
   # ),
   
   #################
-  # Registros históricos y Climatología Anguil
-  navbarMenu(
-    title = "Índices Agrometeorológicos",
-    tabPanel(
-      title = "Estadística Básica",
-      value = "agromet_basica",
-      agroBasicaUI(id = "agromet_basica")
-    ),
-    tabPanel(
-      title = "Índices",
-      value = "agromet_indices",
-      agroIndicesUI(id = "agromet_indices")
-    )
-  ),
-  
-  #################
   # Links
   tabPanel(
     title = "Links",
-    icon = icon("link",verify_fa = FALSE),
+    icon = icon("link", verify_fa = FALSE),
     value = "links",
     linksUI(id = "links")
   ),
@@ -86,7 +80,7 @@ ui <- navbarPage(
   # Informes técnicos y publicaciones
   tabPanel(
     title = "Informes técnicos y publicaciones",
-    icon = icon("publicaciones",verify_fa = FALSE),
+    icon = icon("publicaciones", verify_fa = FALSE),
     value = "publicaciones",
     publicacionesUI(id = "publicaciones")
   ),
@@ -95,7 +89,7 @@ ui <- navbarPage(
   # Eventos climáticos extremos
   tabPanel(
     title = "Eventos",
-    icon = icon("eventos",verify_fa = FALSE),
+    icon = icon("eventos", verify_fa = FALSE),
     value = "eventos",
     eventosUI(id = "eventos")
   ),
@@ -104,7 +98,7 @@ ui <- navbarPage(
   # Radar meteorológico
   tabPanel(
     title = "Radar",
-    icon = icon("radar",verify_fa = FALSE),
+    icon = icon("radar", verify_fa = FALSE),
     value = "radar",
     radarUI(id = "radar")
   ),
@@ -113,28 +107,42 @@ ui <- navbarPage(
   # Radiación solar
   tabPanel(
     title = "Radiación solar",
-    icon = icon("radiacion",verify_fa = FALSE),
+    icon = icon("radiacion", verify_fa = FALSE),
     value = "radiacion",
     radiacionUI(id = "radiacion")
   ),
   
-  #################
-  # REPOSITORIO DIGITAL DE ARCHIVOS DE CARTOGRAFIA
-  tabPanel(
-    title = "Repositorio digital de archivos de cartografía",
-    icon = icon("",verify_fa = FALSE),
-    value = "gis",
-    gisUI(id = "gis")
+  tags$footer(
+    'Estación Experimental Agropecuaria Anguil "Ing. Agr. Guillermo Covas". 
+    Ruta Nacional N| 5. Km 580. (6326) Anguil, La Pampa. 02954-495057 - @intaanguil',
+    align = "center",
+    style = "
+            position:fixed;
+            bottom:0;
+            width:100%;
+            height:50px;
+            color: black;
+            padding: 10px;
+            background-color: white;
+            z-index: 1000;
+            right: 0;
+            text-align:center;
+    "
   )
-  
 )
+
 
 #################################
 # SERVER
 server <- function(input, output, session) {
   #################
   # Inicio
-  callModule(inicioServer, "inicio", parent_session = session)
+  #callModule(inicioServer, "inicio", parent_session = session)
+  
+  #################
+  # agromet
+  agroBasicaServer(id = "agromet_basica")
+  agroIndicesServer(id = "agromet_indices")
   
   #################
   # historico
@@ -147,12 +155,6 @@ server <- function(input, output, session) {
   #################
   # cartografia
   cartografiaServer(id = "cartografia")
-  
-  #################
-  # agromet
-  #agrometServer(id = "agromet")
-  agroBasicaServer(id = "agromet_basica")
-  agroIndicesServer(id = "agromet_indices")
   
   #################
   # links
@@ -169,10 +171,6 @@ server <- function(input, output, session) {
   #################
   # radar
   radarServer(id = "radar")
-  
-  #################
-  # gis
-  gisServer(id = "gis")
   
 }
 
