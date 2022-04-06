@@ -6,6 +6,8 @@ library(shinydashboard)
 library(plotly)
 library(RColorBrewer)
 library(wesanderson)
+library(shinyWidgets)
+library(shinyjs)
 
 meses <-
   c(

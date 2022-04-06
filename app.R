@@ -7,6 +7,14 @@ ui <- navbarPage(
   windowTitle = "Sistema Anguil",
   theme = shinytheme("superhero"),
   
+  ## Para alinear el listado a la izquierda.
+  ## Por default, queda centrado
+  
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "estilos.css")
+  ),
+  
+  
   #################
   # Inicio
   tabPanel(
