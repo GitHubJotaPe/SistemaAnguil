@@ -268,7 +268,7 @@ anguilServer <- function(id) {
                    fig <- fig %>% layout(
                      title = list(
                        text = paste0(
-                         "TEMPERATURAS MEDIAS Y PRECIPITACION",
+                         "Temperaturas medias y precipitación",
                          '<br>',
                          '<sup>',
                          'Temperaturas y precipitaciones entre 1980 y 2010',
@@ -306,7 +306,7 @@ anguilServer <- function(id) {
                    fig <- plot_ly(data_grafico)
                    
                    fig <- fig %>% add_bars(
-                     name = 'HELIOFANIA EFECTIVA MEDIA',
+                     name = 'Heliofania efectiva media',
                      x = ~ mes_nombre,
                      y = ~ heliofania_efec_mean,
                      color = I("khaki3")
@@ -314,9 +314,9 @@ anguilServer <- function(id) {
                    )
                    
                    fig <- fig %>% layout(
-                     title = list(text = "HELIOFANIA EFECTIVA MEDIA"),
-                     yaxis = list(title = "HELIOFANIA (xxx)"),
-                     xaxis = list(title = "MESES")
+                     title = list(text = "Heliofania efectiva media"),
+                     yaxis = list(title = "Heliofania (hs)"),
+                     xaxis = list(title = "Meses")
                    )
                    
                    fig
@@ -362,9 +362,9 @@ anguilServer <- function(id) {
                    
                    fig <- fig %>% layout(
                      barmode = 'stack',
-                     title = list(text = "CANTIDAD DE DIAS CON TEMPERATURA MAXIMA"),
-                     yaxis = list(title = "CANTIDAD DE DIAS"),
-                     xaxis = list(title = "MESES")
+                     title = list(text = "Cantidad de días con temperatura máxima"),
+                     yaxis = list(title = "Cantidad de días"),
+                     xaxis = list(title = "Meses")
                    )
                    
                    fig
@@ -436,9 +436,9 @@ anguilServer <- function(id) {
                      )
                    fig <- fig %>% layout(
                      barmode = 'stack',
-                     title = list(text = "CANTIDAD DE DIAS CON PRECIPITACIÓN"),
-                     yaxis = list(title = "CANTIDAD DE DIAS"),
-                     xaxis = list(title = "MESES")
+                     title = list(text = "Cantidad de dias con precipitación"),
+                     yaxis = list(title = "Cantidad de días"),
+                     xaxis = list(title = "Meses")
                    )
                    
                    fig
@@ -503,7 +503,7 @@ anguilServer <- function(id) {
                    )
                    
                    fig <- fig %>% layout(
-                     title = "VELOCIDAD DEL VIENTO MEDIO",
+                     title = "Velocidad del viento medio",
                      yaxis = list(title = "Velocidad (km/h)"),
                      xaxis = list(title = "Meses")
                    )
@@ -640,8 +640,8 @@ anguilServer <- function(id) {
                    )
                    
                    fig <- fig %>% layout(
-                     title = "TEMPERATURA MINIMA/MAXIMA OBSERVADA",
-                     yaxis = list(title = "TEMPERATURA (ºC)"),
+                     title = "Temperatuda mínima/máxima observada",
+                     yaxis = list(title = "Temperatura (ºC)"),
                      xaxis = list(title = "Meses")
                    )
                    

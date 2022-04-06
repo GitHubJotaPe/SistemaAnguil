@@ -15,7 +15,11 @@ ui <- navbarPage(
   #   shinythemes::themeSelector(),
   #   inicioUI(id = "inicio")
   # ),
+<<<<<<< HEAD
   
+=======
+   
+>>>>>>> 3481b1015dc0b555aacb564ca8128aa11fcc1e35
   #################
   # Registros históricos y Climatología Anguil
   navbarMenu(
