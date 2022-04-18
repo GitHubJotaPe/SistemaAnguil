@@ -120,12 +120,13 @@ ui <- navbarPage(
             bottom:0;
             width:100%;
             height:50px;
-            color: black;
+            color: #e6e6e6;
             padding: 10px;
-            background-color: white;
+            background-color: #373737;
             z-index: 1000;
             right: 0;
             text-align:center;
+            font-size: 14px;
     "
   )
 )
