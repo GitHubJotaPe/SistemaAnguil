@@ -51,16 +51,18 @@ agroIndicesUI <- function(id) {
         dashboardHeader(disable = TRUE),
         dashboardSidebar(disable = TRUE),
         dashboardBody(
-          tags$head(tags$style(
-            HTML(
-              '
-              /* body */
-              .content-wrapper, .right-side {
-                background-color: #2b3e50; //4e5d6c
-              }
-              '
-            )
-          )),
+          
+          # tags$head(
+          #   tags$style(
+          #   HTML(
+          #     '
+          #     /* body */
+          #     .content-wrapper, .right-side {
+          #       background-color: #2b3e50; //4e5d6c
+          #     }
+          #     '
+          #   )
+          # )),
           
           #h1("Estadísticas básicas"),
           

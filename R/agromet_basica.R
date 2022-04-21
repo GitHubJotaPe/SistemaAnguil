@@ -25,16 +25,17 @@ agroBasicaUI <- function(id) {
         dashboardHeader(disable = TRUE),
         dashboardSidebar(disable = TRUE),
         dashboardBody(
-          tags$head(tags$style(
-            HTML(
-              '
-              /* body */
-              .content-wrapper, .right-side {
-                background-color: #2b3e50; //4e5d6c
-              }
-              '
-            )
-          )),
+          # tags$head(
+          #   tags$style(
+          #   HTML(
+          #     '
+          #     /* body */
+          #     .content-wrapper, .right-side {
+          #       background-color: #2b3e50; //4e5d6c
+          #     }
+          #     '
+          #   )
+          # )),
           
           #h1("Estadísticas básicas"),
           
@@ -57,7 +58,21 @@ agroBasicaUI <- function(id) {
             valueBoxOutput(ns("viento_max"))
             
           ),
-          fluidRow(plotlyOutput(ns("grafico_radar")))
+          fluidRow(
+            column(2,
+                   )
+            ,
+            column(8,
+                   plotlyOutput(ns("grafico_radar"))
+            )
+            ,
+            
+            column(2,
+                   )
+            )
+            
+            
+            
           
           
         )
@@ -188,7 +203,6 @@ agroBasicaServer <- function(id) {
                  
                  
                  output$grafico_radar <- renderPlotly({
-                   mrg <- list(t = 50)
                    
                    fig <- plot_ly(
                      name = "Dir. del Viento",
@@ -207,8 +221,8 @@ agroBasicaServer <- function(id) {
                      layout(
                        showlegend = T,
                        title = list(text = "Frecuencia de vientos o Rosa de los vientos"),
-                       margin = mrg,
-                       paper_bgcolor = '#b0bdca'
+                       margin = list(t = 50)
+                       # , paper_bgcolor = '#b0bdca'
                      )
                    
                    fig

@@ -5,7 +5,7 @@ ui <- navbarPage(
   title =
     "Sistema Anguil",
   windowTitle = "Sistema Anguil",
-  theme = shinytheme("superhero"),
+  theme = shinytheme("flatly"),
   
   # #################
   # # Inicio
@@ -122,7 +122,7 @@ ui <- navbarPage(
             height:50px;
             color: #e6e6e6;
             padding: 10px;
-            background-color: #373737;
+            background-color: #2c3e50;
             z-index: 1000;
             right: 0;
             text-align:center;
