@@ -2,9 +2,9 @@
 # UI
 ui <- navbarPage(
   id = "tabs",
-  title =
-    "Sistema Anguil",
+  title =  div(img(src="logo_inta_40px.png"), "Sistema Anguil"),
   windowTitle = "Sistema Anguil",
+  
   theme = shinytheme("flatly"),
   
   # #################
