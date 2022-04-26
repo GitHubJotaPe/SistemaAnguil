@@ -111,6 +111,15 @@ ui <- navbarPage(
     radiacionUI(id = "radiacion")
   ),
   
+  #################
+  # Estadisticas Anguil
+  tabPanel(
+    title = "Estadísticas datos Anguil",
+    icon = icon("", verify_fa = FALSE),
+    value = "estadisticas_anguil",
+    estadisticasAnguilUI(id = "estadisticas_anguil")
+  ),
+  
   tags$footer(
     'Estación Experimental Agropecuaria Anguil "Ing. Agr. Guillermo Covas". 
     Ruta Nacional N| 5. Km 580. (6326) Anguil, La Pampa. 02954-495057 - @intaanguil',
@@ -171,6 +180,10 @@ server <- function(input, output, session) {
   #################
   # radar
   radarServer(id = "radar")
+  
+  #################
+  # Estadisticas Anguil
+  estadisticasAnguilServer(id = "estadisticas_anguil")
   
 }
 
