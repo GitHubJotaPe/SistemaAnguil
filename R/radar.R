@@ -3,7 +3,7 @@
 radarUI <- function(id) {
   ns <- NS(id)
   
-  tagList(tags$h1("radar2"),
+  tagList(tags$h1("radar 2"),
           tags$h4("radar"))
 }
 
